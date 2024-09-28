@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Device</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h2>Add New Device</h2>
+    </header>
+    <main>
+        <form id="addDeviceForm">
+            <div class="form-group">
+                <label for="deviceId">Device ID:</label>
+                <input type="text" required id="deviceId" name="deviceId" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" required id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select id="status" required name="status" required>
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ip">IP Address:</label>
+                <input type="text" required id="ip" name="ip" required>
+            </div>
+            <div class="form-group">
+                <label for="firmwareVersion">Firmware Version:</label>
+                <input type="text"required id="firmwareVersion" name="firmwareVersion" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" required id="location" name="location">
+            </div>
+            <div class="form-group">
+                <label for="os">Operating System:</label>
+                <input type="text" required id="os" name="os">
+            </div>
+            <div class="form-group">
+                <label for="userIds">User IDs (comma-separated):</label>
+                <input type="text" required id="userIds" name="userIds">
+            </div>
+        </form>
+        <div class="form-buttons">
+            <button id="cancelButton" type="button">Cancel</button>
+            <button id="submitButton" type="submit">Add Device</button>
+        </div>
+    </main>
+</body>
+</html>

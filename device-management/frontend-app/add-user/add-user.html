@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New User</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h2>Add New User</h2>
+    </header>
+    <main>
+        <form id="addUserForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" required id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" required id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select id="role" required name="role" required>
+                    <option value=0>Admin</option>
+                    <option value=1>User</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="activity">Activity:</label>
+                <select id="activity" required name="activity" required>
+                    <option value=false>Inactive</option>
+                    <option value=true>Active</option>
+                </select>
+            </div>
+        </form>
+        <div class="form-buttons">
+            <button id="cancelButton" type="button">Cancel</button>
+            <button id="submitButton" type="submit">Add User</button>
+        </div>
+    </main>
+</body>
+</html>

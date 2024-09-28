@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+
+        <div class="container">
+            <div class="actions">
+                <button id="restartButton">Restart</button>
+                <button id="shutdownButton">Shutdown</button>
+                <div class="notification-dropdown">
+                    <button class="notification-btn">Notifications</button>
+                    <div class="notification-content">
+                        <p>No new notifications</p>
+                    </div>
+                </div>
+            </div>
+            <div class="charts">
+                <div class="chart-container">
+                    <h2>CPU Usage</h2>
+                    <canvas id="cpuChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Temperature</h2>
+                    <canvas id="temperatureChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

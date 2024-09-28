@@ -1,0 +1,56 @@
+package main
+
+import (
+	"io"
+	"log"
+	"time"
+	"user-service/database"
+	"user-service/service"
+
+	"github.com/opentracing/opentracing-go"
+	"github.com/uber/jaeger-client-go"
+	jaegercfg "github.com/uber/jaeger-client-go/config"
+)
+
+func NewTracer(servicename string, addr string) (opentracing.Tracer, io.Closer, error) {
+	cfg := jaegercfg.Configuration{
+		ServiceName: servicename,
+		Sampler: &jaegercfg.SamplerConfig{
+			Type:  jaeger.SamplerTypeConst,
+			Param: 1,
+		},
+		Reporter: &jaegercfg.ReporterConfig{
+			LogSpans:            true,
+			BufferFlushInterval: 1 * time.Second,
+		},
+	}
+
+	sender, err := jaeger.NewUDPTransport(addr, 0)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	reporter := jaeger.NewRemoteReporter(sender)
+
+	tracer, closer, err := cfg.NewTracer(
+		jaegercfg.Reporter(reporter),
+	)
+
+	return tracer, closer, err
+}
+func main() {
+	t, io, err := NewTracer("user-service", "localhost:6831")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer io.Close()
+	opentracing.SetGlobalTracer(t)
+	db := database.InitDB()
+	database.MigrateSchemas(db)
+
+	srv := service.NewService(t)
+	service.RegisterUserServiceHandler(srv, db)
+	service.InitService(srv)
+
+	service.RunService(srv)
+}

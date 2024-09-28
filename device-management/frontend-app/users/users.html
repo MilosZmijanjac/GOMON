@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Table</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   
+    <div class="table-container">
+        <header>
+            <nav>
+                <div class="dropdown">
+                    <button class="dropbtn">Menu</button>
+                    <div class="dropdown-content">
+                        <a href="../devices/devices.html">Devices</a>
+                        <a href="users.html">Users</a>
+                        <a href="#" id="logout">Logout</a>
+                    </div>
+                </div>
+                <h2>Users List</h2>
+            </nav>
+        </header>
+        <div class="table-wrapper">
+            <table id="usersTable">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted here dynamically -->
+                </tbody>
+            </table>
+        </div>
+        <div class="bottom-container">
+            <button class="add-new-btn" id="addNewUser">Add New</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
